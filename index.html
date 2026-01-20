@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Restrictions Guide | International Beauty</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #E0E5EC;
+            --foreground: #3D4852;
+            --muted: #6B7280;
+            --accent: #6C63FF;
+            --accent-light: #8B84FF;
+            --accent-secondary: #38B2AC;
+            --shadow-light: rgba(255, 255, 255, 0.5);
+            --shadow-light-strong: rgba(255, 255, 255, 0.6);
+            --shadow-dark: rgb(163, 177, 198, 0.6);
+            --shadow-dark-strong: rgb(163, 177, 198, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--foreground);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .font-display {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Neumorphic Shadows */
+        .neu-raised {
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+        }
+
+        .neu-raised-sm {
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .neu-raised:hover, .card:hover {
+            box-shadow: 12px 12px 20px var(--shadow-dark-strong), -12px -12px 20px var(--shadow-light-strong);
+            transform: translateY(-2px);
+        }
+
+        .neu-inset {
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+        }
+
+        .neu-inset-deep {
+            box-shadow: inset 10px 10px 20px var(--shadow-dark-strong), inset -10px -10px 20px var(--shadow-light-strong);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg);
+            padding: 20px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--foreground);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 16px;
+            background: var(--bg);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+            transition: all 0.3s ease-out;
+        }
+
+        .logo:hover {
+            transform: translateY(-1px);
+            box-shadow: 7px 7px 14px var(--shadow-dark-strong), -7px -7px 14px var(--shadow-light-strong);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease-out;
+        }
+
+        nav a:hover {
+            color: var(--foreground);
+            background: var(--bg);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            padding: 12px;
+            border-radius: 12px;
+            background: var(--bg);
+            border: none;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+            color: var(--foreground);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 100px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--bg);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-visual {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 32px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+        }
+
+        .hero-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .diagram-box {
+            padding: 20px 32px;
+            border-radius: 16px;
+            background: var(--bg);
+            text-align: center;
+            transition: all 0.3s ease-out;
+        }
+
+        .diagram-box.inset {
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+        }
+
+        .diagram-box.raised {
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .diagram-box .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .diagram-box .label {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .diagram-arrow {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* FAQ Cards */
+        .faq-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .faq-card {
+            padding: 32px;
+            border-radius: 24px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            transition: all 0.3s ease-out;
+        }
+
+        .faq-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 12px 12px 20px var(--shadow-dark-strong), -12px -12px 20px var(--shadow-light-strong);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+            font-size: 1.25rem;
+        }
+
+        .faq-question h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .faq-answer {
+            color: var(--muted);
+            padding-left: 64px;
+        }
+
+        .faq-answer ul {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
+        /* Tag Cards */
+        .tag-section {
+            margin-top: 32px;
+        }
+
+        .tag-section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            padding-left: 64px;
+        }
+
+        .tags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            padding-left: 64px;
+        }
+
+        .tag-card {
+            padding: 20px;
+            border-radius: 16px;
+            background: var(--bg);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+            transition: all 0.3s ease-out;
+        }
+
+        .tag-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 7px 7px 14px var(--shadow-dark-strong), -7px -7px 14px var(--shadow-light-strong);
+        }
+
+        .tag-name {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-family: 'DM Sans', monospace;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+        }
+
+        .tag-name.product {
+            color: #E53E3E;
+        }
+
+        .tag-name.customer {
+            color: var(--accent);
+        }
+
+        .tag-name.region {
+            color: var(--accent-secondary);
+        }
+
+        .tag-description {
+            font-size: 0.9375rem;
+            color: var(--muted);
+        }
+
+        /* Scenario Cards */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .scenario-card {
+            padding: 32px;
+            border-radius: 24px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            transition: all 0.3s ease-out;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 12px 12px 20px var(--shadow-dark-strong), -12px -12px 20px var(--shadow-light-strong);
+        }
+
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .scenario-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            font-size: 1.5rem;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+        }
+
+        .scenario-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .scenario-content {
+            color: var(--muted);
+        }
+
+        .scenario-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .mini-tag {
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+        }
+
+        .mini-tag.product {
+            color: #E53E3E;
+        }
+
+        .mini-tag.customer {
+            color: var(--accent);
+        }
+
+        .scenario-result {
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 16px;
+            font-weight: 500;
+            background: var(--bg);
+        }
+
+        .scenario-result.visible {
+            color: var(--accent-secondary);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+        }
+
+        .scenario-result.hidden {
+            color: #E53E3E;
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+        }
+
+        /* Quick Reference */
+        .quick-ref {
+            padding: 40px;
+            border-radius: 32px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+        }
+
+        .quick-ref h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .ref-item {
+            padding: 24px;
+            border-radius: 16px;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+        }
+
+        .ref-item h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ref-item p {
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        /* Salon Discount Section */
+        .discount-callout {
+            padding: 40px;
+            border-radius: 32px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .discount-callout h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--accent-secondary);
+        }
+
+        .discount-callout p {
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .discount-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .discount-tag {
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: var(--accent-secondary);
+            background: var(--bg);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            padding: 40px;
+            border-radius: 32px;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+        }
+
+        .footer-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: 0.875rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 60px 0 80px;
+            }
+
+            .hero-visual {
+                padding: 24px;
+            }
+
+            .hero-diagram {
+                flex-direction: column;
+            }
+
+            .diagram-arrow {
+                transform: rotate(90deg);
+            }
+
+            .faq-answer, .tag-section-title, .tags-grid {
+                padding-left: 0;
+            }
+
+            .faq-question {
+                flex-direction: column;
+            }
+
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-ref, .discount-callout {
+                padding: 24px;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Focus states for accessibility */
+        a:focus, button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">IBSS <span>Restrictions</span></a>
+                <nav>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#common-questions">Common Questions</a>
+                    <a href="#tags">All Tags</a>
+                    <a href="#examples">Examples</a>
+                </nav>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge">Internal Documentation</div>
+                <h1 class="font-display">Product <span>Restrictions</span> Guide</h1>
+                <p>A simple guide to understanding which customers can see and purchase which products on our website.</p>
+
+                <div class="hero-visual">
+                    <div class="hero-diagram">
+                        <div class="diagram-box raised">
+                            <div class="icon">🏷️</div>
+                            <div class="label">Product Tags</div>
+                        </div>
+                        <div class="diagram-arrow">+</div>
+                        <div class="diagram-box raised">
+                            <div class="icon">👤</div>
+                            <div class="label">Customer Tags</div>
+                        </div>
+                        <div class="diagram-arrow">=</div>
+                        <div class="diagram-box inset">
+                            <div class="icon">✓</div>
+                            <div class="label">Can See Product?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">How Does It Work?</h2>
+                    <p>Our website automatically checks product tags against customer tags to determine what each customer can see.</p>
+                </div>
+
+                <div class="quick-ref">
+                    <h3>The Basic Idea</h3>
+                    <div class="ref-grid">
+                        <div class="ref-item">
+                            <h4>🏷️ Product Tags</h4>
+                            <p>Tags on products tell the system who should be able to see or buy them. These are set by our team.</p>
+                        </div>
+                        <div class="ref-item">
+                            <h4>👤 Customer Tags</h4>
+                            <p>Tags on customer accounts identify who they are—their region, if they're a salon, which brands they can access.</p>
+                        </div>
+                        <div class="ref-item">
+                            <h4>🔒 Brand Restrictions</h4>
+                            <p>Some brands require special access. The customer must have the matching brand tag to see prices.</p>
+                        </div>
+                        <div class="ref-item">
+                            <h4>🗺️ Regional Restrictions</h4>
+                            <p>Some products can't be shipped to certain regions. Customers in those regions won't see these products.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Questions -->
+        <section id="common-questions">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Common Questions</h2>
+                    <p>Quick answers to the questions you'll hear most often.</p>
+                </div>
+
+                <div class="faq-grid">
+                    <!-- Question 1 -->
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">🔐</div>
+                            <h3>"Why does it say 'Login to see prices'?"</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This message appears when a product requires the customer to be logged in to see the price. This happens when:</p>
+                            <ul>
+                                <li>The product has the <strong>logintosee</strong> tag</li>
+                                <li>The customer is not logged into their account</li>
+                            </ul>
+                            <p><strong>Solution:</strong> Ask the customer to log in to their account. If they don't have an account, they'll need to register first.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">⏳</div>
+                            <h3>"Why does it say 'Your account has not been approved'?"</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>New accounts need to be approved before they can see professional pricing. This message means:</p>
+                            <ul>
+                                <li>The customer has an account but hasn't been approved yet</li>
+                                <li>They're missing the <strong>bluelinktagged</strong> tag on their account</li>
+                            </ul>
+                            <p><strong>Solution:</strong> Check if their account is pending in Bluelink. If it's been more than 3 days, there may be an issue with their application.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">🚫</div>
+                            <h3>"Why does it say 'Contact IBSS for information'?"</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This appears when a product requires special brand access that the customer doesn't have. They're logged in and approved, but they need access to a specific brand.</p>
+                            <ul>
+                                <li><strong>Balmain products</strong> — Customer needs <strong>brand:balmain</strong> tag</li>
+                                <li><strong>Kevin Murphy products</strong> — Customer needs <strong>brand:km</strong> tag</li>
+                                <li><strong>Eufora products</strong> — Customer needs <strong>brand:eufora</strong> tag</li>
+                                <li><strong>AZ Craft products</strong> — Customer needs <strong>brand:az</strong> tag</li>
+                                <li><strong>Hair Color products</strong> — Customer needs <strong>hair salon</strong> or <strong>hairsty/barber</strong> tag</li>
+                            </ul>
+                            <p><strong>Solution:</strong> If the customer qualifies for brand access, their account tags need to be updated.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">🗺️</div>
+                            <h3>"Why does it say 'Not available in [Region]'?"</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Some products cannot be sold in certain regions. The customer is in a region where this product isn't available.</p>
+                            <ul>
+                                <li><strong>Not available in Eastern Canada</strong> — Product has <strong>restrict:east</strong> tag</li>
+                                <li><strong>Not available in BC Region</strong> — Product has <strong>restrict:bc</strong> tag</li>
+                                <li><strong>Not available in Prairie Region</strong> — Product has <strong>restrict:prairie</strong> tag</li>
+                                <li><strong>Not available in Quebec Region</strong> — Product has <strong>restrict:qc</strong> tag</li>
+                            </ul>
+                            <p><strong>Note:</strong> Regional restrictions apply to everyone in that region, even logged-in salon customers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">💇</div>
+                            <h3>"How do salon discounts work?"</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Customers with the <strong>hair salon</strong> tag on their account automatically see a 10% discount on eligible products. These products have one of these tags:</p>
+                            <ul>
+                                <li><strong>eleven salopricing</strong></li>
+                                <li><strong>neu10</strong></li>
+                                <li><strong>ethica</strong></li>
+                            </ul>
+                            <p>The discount shows automatically—no code needed!</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">🥛</div>
+                            <h3>"Why can't this customer see Milkshake products?"</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Milkshake products are only visible to customers in Manitoba and Saskatchewan.</p>
+                            <ul>
+                                <li>Product must have the <strong>milkshake</strong> tag</li>
+                                <li>Customer needs the <strong>region:mb-sk</strong> tag to see them</li>
+                            </ul>
+                            <p><strong>Note:</strong> This is the opposite of other regional restrictions—instead of hiding products FROM a region, Milkshake products are only SHOWN to MB-SK customers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">💜</div>
+                            <h3>"Why can't this customer see Matrix products?"</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Matrix products require special authorization.</p>
+                            <ul>
+                                <li>Product has the <strong>matrix</strong> tag</li>
+                                <li>Customer needs the <strong>matrixoverride</strong> tag on their account</li>
+                            </ul>
+                            <p><strong>Solution:</strong> If the customer should have Matrix access, their account needs the matrixoverride tag added.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">✨</div>
+                            <h3>"What's special about Megix products?"</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Megix products have a special rule for Ontario customers:</p>
+                            <ul>
+                                <li>If a customer has <strong>region:ontario</strong> tag AND the product has <strong>megix</strong> tag</li>
+                                <li>ALL regional restrictions are bypassed for that product</li>
+                            </ul>
+                            <p>This means Ontario customers can see Megix products even if they would normally be restricted in their region.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Tags Reference -->
+        <section id="tags">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Tag Reference</h2>
+                    <p>A complete list of all tags used in the restriction system.</p>
+                </div>
+
+                <!-- Product Tags -->
+                <div class="faq-card">
+                    <div class="faq-question">
+                        <div class="faq-icon">🏷️</div>
+                        <h3>Product Tags</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>These tags are added to products to control who can see them.</p>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">General Access Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name product">logintosee</div>
+                                    <div class="tag-description">Requires customer to be logged in. Also enables brand restriction checks.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Brand Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name product">fbrand:balmain</div>
+                                    <div class="tag-description">Balmain brand product. Customer needs brand:balmain to see.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">fbrand:km</div>
+                                    <div class="tag-description">Kevin Murphy product. Customer needs brand:km to see.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">fbrand:eufora</div>
+                                    <div class="tag-description">Eufora product. Customer needs brand:eufora to see.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">restrict:az</div>
+                                    <div class="tag-description">AZ Craft product. Customer needs brand:az to see.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">restrict:hair color</div>
+                                    <div class="tag-description">Professional hair color. Customer needs hair salon or hairsty/barber tag.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">milkshake</div>
+                                    <div class="tag-description">Milkshake product. Only visible to MB-SK region customers.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">matrix</div>
+                                    <div class="tag-description">Matrix product. Customer needs matrixoverride tag.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">megix</div>
+                                    <div class="tag-description">Megix product. Has special Ontario override rule.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Regional Restriction Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name product">restrict:east</div>
+                                    <div class="tag-description">Hidden from customers in Eastern Canada.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">restrict:bc</div>
+                                    <div class="tag-description">Hidden from customers in British Columbia.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">restrict:prairie</div>
+                                    <div class="tag-description">Hidden from customers in Prairie provinces.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">restrict:qc</div>
+                                    <div class="tag-description">Hidden from customers in Quebec.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Salon Discount Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name product">eleven salopricing</div>
+                                    <div class="tag-description">Eleven Australia products with 10% salon discount.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">neu10</div>
+                                    <div class="tag-description">Products with 10% salon discount.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">ethica</div>
+                                    <div class="tag-description">Ethica products with 10% salon discount.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Tags -->
+                <div class="faq-card" style="margin-top: 24px;">
+                    <div class="faq-question">
+                        <div class="faq-icon">👤</div>
+                        <h3>Customer Tags</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>These tags are added to customer accounts to grant access and identify their region.</p>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Account Status Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name customer">bluelinktagged</div>
+                                    <div class="tag-description">Account has been approved by Bluelink. Required to see professional products.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Business Type Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name customer">hair salon</div>
+                                    <div class="tag-description">Customer is a hair salon. Gets 10% discount on eligible products and can see hair color.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">hairsty/barber</div>
+                                    <div class="tag-description">Customer is a hairstylist or barber. Can see professional hair color products.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Brand Access Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name customer">brand:balmain</div>
+                                    <div class="tag-description">Has access to Balmain products.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">brand:km</div>
+                                    <div class="tag-description">Has access to Kevin Murphy products.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">brand:eufora</div>
+                                    <div class="tag-description">Has access to Eufora products.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">brand:az</div>
+                                    <div class="tag-description">Has access to AZ Craft products.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">matrixoverride</div>
+                                    <div class="tag-description">Has access to Matrix products.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Region Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:east</div>
+                                    <div class="tag-description">Customer is located in Eastern Canada.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:bc</div>
+                                    <div class="tag-description">Customer is located in British Columbia.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:prairie</div>
+                                    <div class="tag-description">Customer is located in the Prairie provinces.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:quebec</div>
+                                    <div class="tag-description">Customer is located in Quebec.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:ontario</div>
+                                    <div class="tag-description">Customer is located in Ontario. Enables Megix override.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:mb-sk</div>
+                                    <div class="tag-description">Customer is in Manitoba or Saskatchewan. Can see Milkshake products.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real Examples -->
+        <section id="examples">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Real-World Examples</h2>
+                    <p>See how the restriction system works in practice.</p>
+                </div>
+
+                <div class="scenarios-grid">
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <div class="scenario-icon">✅</div>
+                            <div class="scenario-title">Salon sees Kevin Murphy</div>
+                        </div>
+                        <div class="scenario-content">
+                            <p>A Toronto salon wants to order Kevin Murphy products.</p>
+                            <div class="scenario-tags">
+                                <span class="mini-tag product">fbrand:km</span>
+                                <span class="mini-tag product">logintosee</span>
+                                <span class="mini-tag customer">brand:km</span>
+                                <span class="mini-tag customer">bluelinktagged</span>
+                            </div>
+                            <div class="scenario-result visible">✓ Can see and purchase</div>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <div class="scenario-icon">❌</div>
+                            <div class="scenario-title">Guest tries to see Balmain</div>
+                        </div>
+                        <div class="scenario-content">
+                            <p>Someone browsing without logging in tries to see Balmain prices.</p>
+                            <div class="scenario-tags">
+                                <span class="mini-tag product">fbrand:balmain</span>
+                                <span class="mini-tag product">logintosee</span>
+                            </div>
+                            <div class="scenario-result hidden">✗ "Login to see prices"</div>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <div class="scenario-icon">❌</div>
+                            <div class="scenario-title">BC customer sees restricted product</div>
+                        </div>
+                        <div class="scenario-content">
+                            <p>A customer in Vancouver tries to view a product restricted in BC.</p>
+                            <div class="scenario-tags">
+                                <span class="mini-tag product">restrict:bc</span>
+                                <span class="mini-tag customer">region:bc</span>
+                            </div>
+                            <div class="scenario-result hidden">✗ "Not available in BC Region"</div>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <div class="scenario-icon">✅</div>
+                            <div class="scenario-title">Ontario customer sees Megix</div>
+                        </div>
+                        <div class="scenario-content">
+                            <p>An Ontario customer views a Megix product that has regional restrictions.</p>
+                            <div class="scenario-tags">
+                                <span class="mini-tag product">megix</span>
+                                <span class="mini-tag product">restrict:prairie</span>
+                                <span class="mini-tag customer">region:ontario</span>
+                            </div>
+                            <div class="scenario-result visible">✓ Can see (Ontario override)</div>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <div class="scenario-icon">💰</div>
+                            <div class="scenario-title">Salon gets 10% discount</div>
+                        </div>
+                        <div class="scenario-content">
+                            <p>A salon customer views an Eleven Australia product.</p>
+                            <div class="scenario-tags">
+                                <span class="mini-tag product">eleven salopricing</span>
+                                <span class="mini-tag customer">hair salon</span>
+                                <span class="mini-tag customer">bluelinktagged</span>
+                            </div>
+                            <div class="scenario-result visible">✓ Sees 10% salon discount</div>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <div class="scenario-icon">⏳</div>
+                            <div class="scenario-title">New account not approved</div>
+                        </div>
+                        <div class="scenario-content">
+                            <p>A new stylist just registered but hasn't been approved yet.</p>
+                            <div class="scenario-tags">
+                                <span class="mini-tag product">logintosee</span>
+                                <span class="mini-tag customer">hairsty/barber</span>
+                            </div>
+                            <div class="scenario-result hidden">✗ "Your account has not been approved"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Salon Discount Callout -->
+        <section>
+            <div class="container">
+                <div class="discount-callout">
+                    <h3>💇 Salon Discount Products</h3>
+                    <p>Products with these tags automatically show a 10% discount to customers with the <strong>hair salon</strong> tag:</p>
+                    <div class="discount-tags">
+                        <span class="discount-tag">eleven salopricing</span>
+                        <span class="discount-tag">neu10</span>
+                        <span class="discount-tag">ethica</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">International <span>Beauty</span></div>
+                <p>Internal Documentation • Product Restrictions Guide</p>
+                <p style="margin-top: 8px; opacity: 0.7;">Questions? Contact the web team.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
