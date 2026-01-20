@@ -835,12 +835,13 @@
                             <h3>"Why can't this customer see Matrix products?"</h3>
                         </div>
                         <div class="faq-answer">
-                            <p>Matrix products require special authorization.</p>
+                            <p>Matrix products are restricted by region—they have regional restriction tags like <strong>restrict:bc</strong>, <strong>restrict:east</strong>, etc. Customers in those regions won't see Matrix products.</p>
                             <ul>
-                                <li>Product has the <strong>matrix</strong> tag</li>
-                                <li>Customer needs the <strong>matrixoverride</strong> tag on their account</li>
+                                <li>Product has the <strong>matrix</strong> tag AND regional restriction tags</li>
+                                <li>If the customer has <strong>matrixoverride</strong> tag, they can see Matrix products regardless of their region</li>
                             </ul>
-                            <p><strong>Solution:</strong> If the customer should have Matrix access, their account needs the matrixoverride tag added.</p>
+                            <p><strong>How it works:</strong> The matrixoverride tag bypasses all regional restrictions for Matrix products—similar to how Ontario customers can see Megix products.</p>
+                            <p><strong>Solution:</strong> If the customer should have Matrix access everywhere, add the matrixoverride tag to their account.</p>
                         </div>
                     </div>
 
@@ -919,7 +920,7 @@
                                 </div>
                                 <div class="tag-card">
                                     <div class="tag-name product">matrix</div>
-                                    <div class="tag-description">Matrix product. Customer needs matrixoverride tag.</div>
+                                    <div class="tag-description">Matrix product. Restricted by region, but matrixoverride bypasses regional restrictions.</div>
                                 </div>
                                 <div class="tag-card">
                                     <div class="tag-name product">megix</div>
@@ -1024,7 +1025,7 @@
                                 </div>
                                 <div class="tag-card">
                                     <div class="tag-name customer">matrixoverride</div>
-                                    <div class="tag-description">Has access to Matrix products.</div>
+                                    <div class="tag-description">Bypasses regional restrictions for Matrix products. Works like Megix/Ontario override.</div>
                                 </div>
                             </div>
                         </div>
@@ -1132,6 +1133,23 @@
                                 <span class="mini-tag customer">region:ontario</span>
                             </div>
                             <div class="scenario-result visible">✓ Can see (Ontario override)</div>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <div class="scenario-icon">✅</div>
+                            <div class="scenario-title">Matrix override bypasses region</div>
+                        </div>
+                        <div class="scenario-content">
+                            <p>A BC customer with Matrix authorization views a regionally-restricted Matrix product.</p>
+                            <div class="scenario-tags">
+                                <span class="mini-tag product">matrix</span>
+                                <span class="mini-tag product">restrict:bc</span>
+                                <span class="mini-tag customer">region:bc</span>
+                                <span class="mini-tag customer">matrixoverride</span>
+                            </div>
+                            <div class="scenario-result visible">✓ Can see (matrixoverride bypasses region)</div>
                         </div>
                     </div>
 
