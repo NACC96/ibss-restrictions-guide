@@ -12,8 +12,8 @@
             --bg: #E0E5EC;
             --foreground: #3D4852;
             --muted: #6B7280;
-            --accent: #6C63FF;
-            --accent-light: #8B84FF;
+            --accent: #B40316;
+            --accent-light: #E04355;
             --accent-secondary: #38B2AC;
             --shadow-light: rgba(255, 255, 255, 0.5);
             --shadow-light-strong: rgba(255, 255, 255, 0.6);
@@ -127,6 +127,80 @@
             color: var(--foreground);
             background: var(--bg);
             box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        /* Dropdown Menu */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            color: var(--muted);
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            background: none;
+            border: none;
+            font-size: inherit;
+            font-family: inherit;
+        }
+
+        .nav-dropdown-trigger:hover {
+            color: var(--foreground);
+            background: var(--bg);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .nav-dropdown-trigger svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-trigger svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 200px;
+            padding: 8px;
+            border-radius: 16px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            border-radius: 8px;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-dropdown-menu a:hover {
+            color: var(--foreground);
+            background: var(--bg);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
         }
 
         .mobile-menu-btn {
@@ -579,6 +653,60 @@
         @media (max-width: 768px) {
             nav {
                 display: none;
+                position: absolute;
+                top: calc(100% + 12px);
+                left: 24px;
+                right: 24px;
+                flex-direction: column;
+                gap: 4px;
+                padding: 16px;
+                border-radius: 20px;
+                background: var(--bg);
+                box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            }
+
+            nav.mobile-open {
+                display: flex;
+            }
+
+            nav a {
+                padding: 14px 16px;
+            }
+
+            /* Mobile dropdown */
+            .nav-dropdown {
+                width: 100%;
+            }
+
+            .nav-dropdown-trigger {
+                width: 100%;
+                justify-content: space-between;
+                padding: 14px 16px;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: hidden;
+                max-height: 0;
+                overflow: hidden;
+                padding: 0;
+                margin-top: 4px;
+                box-shadow: none;
+                background: transparent;
+                transition: max-height 0.3s ease, padding 0.3s ease, visibility 0s 0.3s;
+            }
+
+            .nav-dropdown.open .nav-dropdown-menu {
+                visibility: visible;
+                max-height: 200px;
+                padding: 8px 0 8px 16px;
+                transition: max-height 0.3s ease, padding 0.3s ease, visibility 0s;
+            }
+
+            .nav-dropdown-menu a {
+                padding: 12px 16px;
             }
 
             .mobile-menu-btn {
@@ -634,17 +762,234 @@
             box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
             border-radius: 8px;
         }
+
+        /* Quick Tag Reference Section */
+        .quick-tag-ref {
+            padding: 60px 0;
+        }
+
+        .quick-tag-ref .section-header {
+            margin-bottom: 40px;
+        }
+
+        .tag-ref-container {
+            padding: 32px;
+            border-radius: 24px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+        }
+
+        .tag-ref-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tag-ref-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .tag-ref-columns:last-child {
+            margin-bottom: 0;
+        }
+
+        .tag-ref-column h4 {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--muted);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-ref-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .ref-tag {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: 'DM Sans', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+        }
+
+        .ref-tag.product {
+            color: #E53E3E;
+        }
+
+        .ref-tag.customer {
+            color: var(--accent);
+        }
+
+        .ref-tag.region {
+            color: var(--accent-secondary);
+        }
+
+        .tag-ref-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--shadow-dark), transparent);
+            margin: 24px 0;
+        }
+
+        @media (max-width: 768px) {
+            .tag-ref-columns {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .tag-ref-container {
+                padding: 24px;
+            }
+        }
+
+        /* Brand Restrictions */
+        .brand-restrictions {
+            padding: 60px 0;
+        }
+
+        .brand-restrictions-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .brand-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: var(--bg);
+            box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+            transition: all 0.2s ease;
+        }
+
+        .brand-item:hover {
+            transform: translateY(-1px);
+            box-shadow: 7px 7px 14px var(--shadow-dark-strong), -7px -7px 14px var(--shadow-light-strong);
+        }
+
+        .brand-item-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--foreground);
+        }
+
+        .brand-item-regions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .region-tag {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #E53E3E;
+            background: var(--bg);
+            box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+        }
+
+        .restriction-info-cards {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .restriction-info-card {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            border-radius: 16px;
+            background: var(--bg);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+            font-size: 0.9375rem;
+            color: var(--muted);
+        }
+
+        .restriction-info-card.highlight {
+            color: var(--accent);
+        }
+
+        .restriction-info-card strong {
+            color: var(--foreground);
+        }
+
+        .restriction-info-card.highlight strong {
+            color: var(--accent);
+        }
+
+        .info-card-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .restriction-info-cards {
+                flex-direction: column;
+            }
+
+            .restriction-info-card {
+                min-width: 100%;
+            }
+
+            .brand-restrictions-list {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .brand-item-regions {
+                justify-content: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="header-inner">
-                <a href="#" class="logo">IBSS <span>Restrictions</span></a>
+                <a href="#" class="logo">International Beauty <span>Restrictions</span></a>
                 <nav>
                     <a href="#how-it-works">How It Works</a>
-                    <a href="#common-questions">Common Questions</a>
-                    <a href="#tags">All Tags</a>
+                    <a href="#common-questions">FAQ</a>
+                    <div class="nav-dropdown">
+                        <button class="nav-dropdown-trigger">
+                            Reference
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu">
+                            <a href="#brand-restrictions">Brand Restrictions</a>
+                            <a href="#quick-reference">Quick Reference</a>
+                            <a href="#tags">All Tags</a>
+                        </div>
+                    </div>
                     <a href="#examples">Examples</a>
                 </nav>
                 <button class="mobile-menu-btn" aria-label="Menu">
@@ -679,6 +1024,279 @@
                         <div class="diagram-box inset">
                             <div class="icon">✓</div>
                             <div class="label">Can See Product?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regional Brand Restrictions -->
+        <section id="brand-restrictions" class="brand-restrictions">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Regional Brand Restrictions</h2>
+                    <p>Quick reference for which brands are restricted in which provinces.</p>
+                </div>
+
+                <div class="restriction-info-cards">
+                    <div class="restriction-info-card">
+                        <div class="info-card-icon">🗺️</div>
+                        <div class="info-card-content">
+                            <strong>East Region includes:</strong> Ontario, New Brunswick, Newfoundland and Labrador, Prince Edward Island, Nova Scotia
+                        </div>
+                    </div>
+                    <div class="restriction-info-card highlight">
+                        <div class="info-card-icon">✨</div>
+                        <div class="info-card-content">
+                            <strong>Megix Override:</strong> Ontario customers can see Megix products regardless of regional restrictions
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-restrictions-list">
+                    <div class="brand-item">
+                        <div class="brand-item-name">Biolage</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">East</span>
+                            <span class="region-tag">BC</span>
+                            <span class="region-tag">Quebec</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-item-name">Colorproof</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">Quebec</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-item-name">Eleven Australia</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">East</span>
+                            <span class="region-tag">BC</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-item-name">EnVogue Nails</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">BC</span>
+                            <span class="region-tag">Quebec</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-item-name">Ethica</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">Prairie</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-item-name">L'Oreal</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">East</span>
+                            <span class="region-tag">BC</span>
+                            <span class="region-tag">Quebec</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-item-name">Matrix</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">East</span>
+                            <span class="region-tag">BC</span>
+                            <span class="region-tag">Quebec</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-item-name">Megix 10 - Mowan</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">East</span>
+                            <span class="region-tag">Quebec</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-item-name">Neuma</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">BC</span>
+                            <span class="region-tag">Quebec</span>
+                        </div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="brand-item-name">Pureology</div>
+                        <div class="brand-item-regions">
+                            <span class="region-tag">East</span>
+                            <span class="region-tag">BC</span>
+                            <span class="region-tag">Prairie</span>
+                            <span class="region-tag">Quebec</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Tag Reference -->
+        <section id="quick-reference" class="quick-tag-ref">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Quick Tag Reference</h2>
+                    <p>All the tags at a glance. See detailed explanations below.</p>
+                </div>
+
+                <div class="tag-ref-container">
+                    <!-- Product Tags -->
+                    <div class="tag-ref-title">🏷️ Product Tags</div>
+                    <div class="tag-ref-columns">
+                        <div class="tag-ref-column">
+                            <h4>Brand Restrictions</h4>
+                            <div class="tag-ref-list">
+                                <span class="ref-tag product">fbrand:balmain</span>
+                                <span class="ref-tag product">fbrand:km</span>
+                                <span class="ref-tag product">fbrand:eufora</span>
+                                <span class="ref-tag product">restrict:az</span>
+                                <span class="ref-tag product">restrict:hair color</span>
+                            </div>
+                        </div>
+                        <div class="tag-ref-column">
+                            <h4>Regional Restrictions</h4>
+                            <div class="tag-ref-list">
+                                <span class="ref-tag product">restrict:east</span>
+                                <span class="ref-tag product">restrict:bc</span>
+                                <span class="ref-tag product">restrict:prairie</span>
+                                <span class="ref-tag product">restrict:qc</span>
+                            </div>
+                        </div>
+                        <div class="tag-ref-column">
+                            <h4>Special Tags</h4>
+                            <div class="tag-ref-list">
+                                <span class="ref-tag product">logintosee</span>
+                                <span class="ref-tag product">milkshake</span>
+                                <span class="ref-tag product">matrix</span>
+                                <span class="ref-tag product">megix</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tag-ref-divider"></div>
+
+                    <!-- Customer Tags -->
+                    <div class="tag-ref-title">👤 Customer Tags</div>
+                    <div class="tag-ref-columns">
+                        <div class="tag-ref-column">
+                            <h4>Brand Access</h4>
+                            <div class="tag-ref-list">
+                                <span class="ref-tag customer">brand:balmain</span>
+                                <span class="ref-tag customer">brand:km</span>
+                                <span class="ref-tag customer">brand:eufora</span>
+                                <span class="ref-tag customer">brand:az</span>
+                                <span class="ref-tag customer">matrixoverride</span>
+                            </div>
+                        </div>
+                        <div class="tag-ref-column">
+                            <h4>Business Type</h4>
+                            <div class="tag-ref-list">
+                                <span class="ref-tag customer">hair salon</span>
+                                <span class="ref-tag customer">hairsty/barber</span>
+                                <span class="ref-tag customer">bluelinktagged</span>
+                            </div>
+                        </div>
+                        <div class="tag-ref-column">
+                            <h4>Regions</h4>
+                            <div class="tag-ref-list">
+                                <span class="ref-tag region">region:east</span>
+                                <span class="ref-tag region">region:bc</span>
+                                <span class="ref-tag region">region:prairie</span>
+                                <span class="ref-tag region">region:quebec</span>
+                                <span class="ref-tag region">region:ontario</span>
+                                <span class="ref-tag region">region:mb-sk</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Tags -->
+                <div class="faq-card" style="margin-top: 32px;">
+                    <div class="faq-question">
+                        <div class="faq-icon">👤</div>
+                        <h3>Customer Tags</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <p>These tags are added to customer accounts to grant access and identify their region.</p>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Account Status Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name customer">bluelinktagged</div>
+                                    <div class="tag-description">Account has been approved by Bluelink. Required to see professional products.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Business Type Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name customer">hair salon</div>
+                                    <div class="tag-description">Customer is a hair salon. Gets 10% discount on eligible products and can see hair color.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">hairsty/barber</div>
+                                    <div class="tag-description">Customer is a hairstylist or barber. Can see professional hair color products.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Brand Access Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name customer">brand:balmain</div>
+                                    <div class="tag-description">Has access to Balmain products.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">brand:km</div>
+                                    <div class="tag-description">Has access to Kevin Murphy products.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">brand:eufora</div>
+                                    <div class="tag-description">Has access to Eufora products.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">brand:az</div>
+                                    <div class="tag-description">Has access to AZ Craft products.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name customer">matrixoverride</div>
+                                    <div class="tag-description">Bypasses regional restrictions for Matrix products. Works like Megix/Ontario override.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-section">
+                            <h4 class="tag-section-title">Region Tags</h4>
+                            <div class="tags-grid">
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:east</div>
+                                    <div class="tag-description">Customer is located in Eastern Canada.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:bc</div>
+                                    <div class="tag-description">Customer is located in British Columbia.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:prairie</div>
+                                    <div class="tag-description">Customer is located in the Prairie provinces.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:quebec</div>
+                                    <div class="tag-description">Customer is located in Quebec.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:ontario</div>
+                                    <div class="tag-description">Customer is located in Ontario. Enables Megix override.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name region">region:mb-sk</div>
+                                    <div class="tag-description">Customer is in Manitoba or Saskatchewan. Can see Milkshake products.</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -762,7 +1380,7 @@
                     <div class="faq-card">
                         <div class="faq-question">
                             <div class="faq-icon">🚫</div>
-                            <h3>"Why does it say 'Contact IBSS for information'?"</h3>
+                            <h3>"Why does it say 'Contact International Beauty for information'?"</h3>
                         </div>
                         <div class="faq-answer">
                             <p>This appears when a product requires special brand access that the customer doesn't have. They're logged in and approved, but they need access to a specific brand.</p>
@@ -970,97 +1588,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Customer Tags -->
-                <div class="faq-card" style="margin-top: 24px;">
-                    <div class="faq-question">
-                        <div class="faq-icon">👤</div>
-                        <h3>Customer Tags</h3>
-                    </div>
-                    <div class="faq-answer">
-                        <p>These tags are added to customer accounts to grant access and identify their region.</p>
-
-                        <div class="tag-section">
-                            <h4 class="tag-section-title">Account Status Tags</h4>
-                            <div class="tags-grid">
-                                <div class="tag-card">
-                                    <div class="tag-name customer">bluelinktagged</div>
-                                    <div class="tag-description">Account has been approved by Bluelink. Required to see professional products.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tag-section">
-                            <h4 class="tag-section-title">Business Type Tags</h4>
-                            <div class="tags-grid">
-                                <div class="tag-card">
-                                    <div class="tag-name customer">hair salon</div>
-                                    <div class="tag-description">Customer is a hair salon. Gets 10% discount on eligible products and can see hair color.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name customer">hairsty/barber</div>
-                                    <div class="tag-description">Customer is a hairstylist or barber. Can see professional hair color products.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tag-section">
-                            <h4 class="tag-section-title">Brand Access Tags</h4>
-                            <div class="tags-grid">
-                                <div class="tag-card">
-                                    <div class="tag-name customer">brand:balmain</div>
-                                    <div class="tag-description">Has access to Balmain products.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name customer">brand:km</div>
-                                    <div class="tag-description">Has access to Kevin Murphy products.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name customer">brand:eufora</div>
-                                    <div class="tag-description">Has access to Eufora products.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name customer">brand:az</div>
-                                    <div class="tag-description">Has access to AZ Craft products.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name customer">matrixoverride</div>
-                                    <div class="tag-description">Bypasses regional restrictions for Matrix products. Works like Megix/Ontario override.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tag-section">
-                            <h4 class="tag-section-title">Region Tags</h4>
-                            <div class="tags-grid">
-                                <div class="tag-card">
-                                    <div class="tag-name region">region:east</div>
-                                    <div class="tag-description">Customer is located in Eastern Canada.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name region">region:bc</div>
-                                    <div class="tag-description">Customer is located in British Columbia.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name region">region:prairie</div>
-                                    <div class="tag-description">Customer is located in the Prairie provinces.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name region">region:quebec</div>
-                                    <div class="tag-description">Customer is located in Quebec.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name region">region:ontario</div>
-                                    <div class="tag-description">Customer is located in Ontario. Enables Megix override.</div>
-                                </div>
-                                <div class="tag-card">
-                                    <div class="tag-name region">region:mb-sk</div>
-                                    <div class="tag-description">Customer is in Manitoba or Saskatchewan. Can see Milkshake products.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -1212,5 +1739,42 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('mobile-open');
+        });
+
+        // Mobile dropdown toggle (tap instead of hover)
+        const navDropdown = document.querySelector('.nav-dropdown');
+        const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
+
+        dropdownTrigger.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                navDropdown.classList.toggle('open');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('mobile-open');
+                navDropdown.classList.remove('open');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                nav.classList.remove('mobile-open');
+                navDropdown.classList.remove('open');
+            }
+        });
+    </script>
 </body>
 </html>
