@@ -651,6 +651,15 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .header-inner {
+                justify-content: flex-start;
+                gap: 12px;
+            }
+
+            .mobile-menu-btn {
+                margin-left: auto;
+            }
+
             nav {
                 display: none;
                 position: absolute;
@@ -866,6 +875,22 @@
             margin: 0 auto;
         }
 
+        .brand-restrictions-note {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .brand-restrictions-note code {
+            background: var(--bg);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.85rem;
+            box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+        }
+
         .brand-item {
             display: flex;
             justify-content: space-between;
@@ -1073,19 +1098,20 @@
                         <div class="brand-item-regions">
                             <span class="region-tag">East</span>
                             <span class="region-tag">BC</span>
+                            <span class="region-tag">Quebec</span>
                         </div>
                     </div>
                     <div class="brand-item">
                         <div class="brand-item-name">EnVogue Nails</div>
                         <div class="brand-item-regions">
-                            <span class="region-tag">BC</span>
+                            <span class="region-tag">East</span>
                             <span class="region-tag">Quebec</span>
                         </div>
                     </div>
                     <div class="brand-item">
                         <div class="brand-item-name">Ethica</div>
                         <div class="brand-item-regions">
-                            <span class="region-tag">Prairie</span>
+                            <span class="region-tag">BC</span>
                         </div>
                     </div>
                     <div class="brand-item">
@@ -1114,7 +1140,7 @@
                     <div class="brand-item">
                         <div class="brand-item-name">Neuma</div>
                         <div class="brand-item-regions">
-                            <span class="region-tag">BC</span>
+                            <span class="region-tag">East</span>
                             <span class="region-tag">Quebec</span>
                         </div>
                     </div>
@@ -1123,11 +1149,12 @@
                         <div class="brand-item-regions">
                             <span class="region-tag">East</span>
                             <span class="region-tag">BC</span>
-                            <span class="region-tag">Prairie</span>
                             <span class="region-tag">Quebec</span>
                         </div>
                     </div>
                 </div>
+
+                <p class="brand-restrictions-note"><strong>Note:</strong> Customers with the <code>matrixoverride</code> tag can see Matrix products regardless of their region.</p>
             </div>
         </section>
 
