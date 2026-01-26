@@ -1083,6 +1083,12 @@
                             <strong>Megix Override:</strong> Ontario customers can see Megix products regardless of regional restrictions
                         </div>
                     </div>
+                    <div class="restriction-info-card highlight">
+                        <div class="info-card-icon">✨</div>
+                        <div class="info-card-content">
+                            <strong>EnVogue Override:</strong> Ontario customers can see EnVogue products regardless of regional restrictions
+                        </div>
+                    </div>
                     <div class="restriction-info-card">
                         <div class="info-card-icon">🥛</div>
                         <div class="info-card-content">
@@ -1209,6 +1215,7 @@
                                 <span class="ref-tag product">milkshake</span>
                                 <span class="ref-tag product">matrix</span>
                                 <span class="ref-tag product">megix</span>
+                                <span class="ref-tag product">envogue</span>
                             </div>
                         </div>
                     </div>
@@ -1533,6 +1540,22 @@
                     <!-- Question 9 -->
                     <div class="faq-card">
                         <div class="faq-question">
+                            <div class="faq-icon">💅</div>
+                            <h3>"What's special about EnVogue products?"</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>EnVogue products follow the same Ontario override rule as Megix:</p>
+                            <ul>
+                                <li>If a customer has <strong>region:ontario</strong> tag AND the product has <strong>envogue</strong> tag</li>
+                                <li>ALL regional restrictions are bypassed for that product</li>
+                            </ul>
+                            <p>This means Ontario customers can see EnVogue products even if they would normally be restricted in their region.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="faq-card">
+                        <div class="faq-question">
                             <div class="faq-icon">📦</div>
                             <h3>"What is the IB Order Entry app?"</h3>
                         </div>
@@ -1611,6 +1634,10 @@
                                 <div class="tag-card">
                                     <div class="tag-name product">megix</div>
                                     <div class="tag-description">Megix product. Has special Ontario override rule.</div>
+                                </div>
+                                <div class="tag-card">
+                                    <div class="tag-name product">envogue</div>
+                                    <div class="tag-description">EnVogue product. Has special Ontario override rule (same as Megix).</div>
                                 </div>
                             </div>
                         </div>
@@ -1728,6 +1755,22 @@
                                 <span class="mini-tag customer">region:ontario</span>
                             </div>
                             <div class="scenario-result visible">✓ Can see (Ontario override)</div>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card">
+                        <div class="scenario-header">
+                            <div class="scenario-icon">✅</div>
+                            <div class="scenario-title">Ontario customer sees EnVogue</div>
+                        </div>
+                        <div class="scenario-content">
+                            <p>An Ontario customer views an EnVogue product that has regional restrictions.</p>
+                            <div class="scenario-tags">
+                                <span class="mini-tag product">envogue</span>
+                                <span class="mini-tag product">restrict:east</span>
+                                <span class="mini-tag customer">region:ontario</span>
+                            </div>
+                            <div class="scenario-result visible">&#10003; Can see (Ontario override)</div>
                         </div>
                     </div>
 
