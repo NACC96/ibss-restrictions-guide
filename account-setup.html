@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Setup Guide | International Beauty</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #E0E5EC;
+            --foreground: #3D4852;
+            --muted: #6B7280;
+            --accent: #B40316;
+            --accent-light: #E04355;
+            --accent-secondary: #38B2AC;
+            --shadow-light: rgba(255, 255, 255, 0.5);
+            --shadow-light-strong: rgba(255, 255, 255, 0.6);
+            --shadow-dark: rgb(163, 177, 198, 0.6);
+            --shadow-dark-strong: rgb(163, 177, 198, 0.7);
+            --green: #16a34a;
+            --amber: #d97706;
+            --gray: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--foreground);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .font-display {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Neumorphic Shadows */
+        .neu-raised {
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+        }
+
+        .neu-raised-sm {
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .neu-raised:hover, .card:hover {
+            box-shadow: 12px 12px 20px var(--shadow-dark-strong), -12px -12px 20px var(--shadow-light-strong);
+            transform: translateY(-2px);
+        }
+
+        .neu-inset {
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+        }
+
+        .neu-inset-deep {
+            box-shadow: inset 10px 10px 20px var(--shadow-dark-strong), inset -10px -10px 20px var(--shadow-light-strong);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg);
+            padding: 20px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--foreground);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 16px;
+            background: var(--bg);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+            transition: all 0.3s ease-out;
+        }
+
+        .logo:hover {
+            transform: translateY(-1px);
+            box-shadow: 7px 7px 14px var(--shadow-dark-strong), -7px -7px 14px var(--shadow-light-strong);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease-out;
+        }
+
+        nav a:hover {
+            color: var(--foreground);
+            background: var(--bg);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        /* Dropdown Menu */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            color: var(--muted);
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            background: none;
+            border: none;
+            font-size: inherit;
+            font-family: inherit;
+        }
+
+        .nav-dropdown-trigger:hover {
+            color: var(--foreground);
+            background: var(--bg);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .nav-dropdown-trigger svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-trigger svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 200px;
+            padding: 8px;
+            border-radius: 16px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            border-radius: 8px;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-dropdown-menu a:hover {
+            color: var(--foreground);
+            background: var(--bg);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            padding: 12px;
+            border-radius: 12px;
+            background: var(--bg);
+            border: none;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+            color: var(--foreground);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--bg);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Path Cards (Getting Started) */
+        .path-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .path-card {
+            padding: 32px;
+            border-radius: 24px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            transition: all 0.3s ease-out;
+            text-align: center;
+        }
+
+        .path-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 12px 12px 20px var(--shadow-dark-strong), -12px -12px 20px var(--shadow-light-strong);
+        }
+
+        .path-card-icon {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            font-size: 1.75rem;
+            margin: 0 auto 20px;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+        }
+
+        .path-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+        }
+
+        .path-card p {
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        .path-card .path-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9375rem;
+        }
+
+        .path-card .path-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Intro Card */
+        .intro-card {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 28px 32px;
+            border-radius: 20px;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .intro-card strong {
+            color: var(--foreground);
+        }
+
+        /* Step Process */
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .step {
+            display: flex;
+            gap: 24px;
+            position: relative;
+            padding-bottom: 32px;
+        }
+
+        .step:last-child {
+            padding-bottom: 0;
+        }
+
+        /* Connector line */
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 56px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-light), transparent);
+            opacity: 0.3;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: var(--bg);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--accent);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-content {
+            flex: 1;
+            padding: 20px 28px;
+            border-radius: 20px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            transition: all 0.3s ease-out;
+        }
+
+        .step-content:hover {
+            transform: translateY(-1px);
+            box-shadow: 12px 12px 20px var(--shadow-dark-strong), -12px -12px 20px var(--shadow-light-strong);
+        }
+
+        .step-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+        }
+
+        .step-body {
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        .step-body ul {
+            margin-top: 8px;
+            padding-left: 20px;
+        }
+
+        .step-body li {
+            margin-bottom: 6px;
+        }
+
+        .step-body strong {
+            color: var(--foreground);
+        }
+
+        .step-tip {
+            margin-top: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: var(--bg);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+            font-size: 0.875rem;
+            color: var(--accent-secondary);
+        }
+
+        .step-warning {
+            margin-top: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: var(--bg);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+            font-size: 0.875rem;
+            color: var(--accent);
+        }
+
+        /* Account Type Grid */
+        .account-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .account-type {
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: var(--bg);
+            box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+            text-align: center;
+        }
+
+        .account-type-icon {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        .account-type-name {
+            font-weight: 600;
+            font-size: 0.8125rem;
+            color: var(--foreground);
+        }
+
+        .account-type-desc {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* Tag pill inline */
+        .tag-pill {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-family: 'DM Sans', monospace;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+        }
+
+        .tag-pill.customer {
+            color: var(--accent);
+        }
+
+        .tag-pill.brand {
+            color: var(--accent);
+        }
+
+        .tag-pill.region {
+            color: var(--accent-secondary);
+        }
+
+        /* New Accounts shortcut */
+        .shortcut-card {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 32px;
+            border-radius: 24px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+        }
+
+        .shortcut-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+        }
+
+        .shortcut-steps {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .shortcut-step {
+            padding: 14px 20px;
+            border-radius: 14px;
+            background: var(--bg);
+            box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            color: var(--foreground);
+            text-align: center;
+        }
+
+        .shortcut-arrow {
+            color: var(--accent);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .shortcut-card p {
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        /* Edge Cases */
+        .edge-cases-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .edge-case-card {
+            padding: 32px;
+            border-radius: 24px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            transition: all 0.3s ease-out;
+        }
+
+        .edge-case-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 12px 12px 20px var(--shadow-dark-strong), -12px -12px 20px var(--shadow-light-strong);
+        }
+
+        .edge-case-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .edge-case-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            font-size: 1.25rem;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+        }
+
+        .edge-case-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .edge-case-body {
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        .edge-case-body h4 {
+            color: var(--foreground);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        .edge-case-body ul {
+            padding-left: 20px;
+        }
+
+        .edge-case-body li {
+            margin-bottom: 6px;
+        }
+
+        .edge-case-body strong {
+            color: var(--foreground);
+        }
+
+        .edge-case-outcome {
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: var(--bg);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+            font-size: 0.875rem;
+            color: var(--accent-secondary);
+            font-weight: 500;
+        }
+
+        /* Tag Checklist */
+        .checklist {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+        }
+
+        .checklist-group {
+            padding: 28px 32px;
+            border-radius: 20px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            border-left: 4px solid;
+            transition: all 0.3s ease-out;
+        }
+
+        .checklist-group:hover {
+            transform: translateY(-1px);
+            box-shadow: 12px 12px 20px var(--shadow-dark-strong), -12px -12px 20px var(--shadow-light-strong);
+        }
+
+        .checklist-group.required {
+            border-left-color: var(--green);
+        }
+
+        .checklist-group.conditional {
+            border-left-color: var(--amber);
+        }
+
+        .checklist-group.automatic {
+            border-left-color: var(--gray);
+        }
+
+        .checklist-label {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.8125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checklist-group.required .checklist-label {
+            color: var(--green);
+        }
+
+        .checklist-group.conditional .checklist-label {
+            color: var(--amber);
+        }
+
+        .checklist-group.automatic .checklist-label {
+            color: var(--gray);
+        }
+
+        .checklist-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .checklist-items {
+            display: grid;
+            gap: 12px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .checklist-check {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background: var(--bg);
+            box-shadow: inset 3px 3px 5px var(--shadow-dark), inset -3px -3px 5px var(--shadow-light);
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        .checklist-group.required .checklist-check {
+            color: var(--green);
+        }
+
+        .checklist-group.conditional .checklist-check {
+            color: var(--amber);
+        }
+
+        .checklist-group.automatic .checklist-check {
+            color: var(--gray);
+        }
+
+        .checklist-item-content {
+            font-size: 0.9375rem;
+            color: var(--muted);
+        }
+
+        .checklist-item-content strong {
+            color: var(--foreground);
+        }
+
+        .checklist-item-content .tag-pill {
+            vertical-align: middle;
+        }
+
+        .checklist-note {
+            margin-top: 8px;
+            font-size: 0.8125rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* Warning Banner */
+        .warning-banner {
+            max-width: 900px;
+            margin: 24px auto 0;
+            padding: 20px 24px;
+            border-radius: 16px;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--accent);
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+
+        .warning-banner-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        /* FAQ / Troubleshooting Cards */
+        .faq-grid {
+            display: grid;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-card {
+            padding: 32px;
+            border-radius: 24px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            transition: all 0.3s ease-out;
+        }
+
+        .faq-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 12px 12px 20px var(--shadow-dark-strong), -12px -12px 20px var(--shadow-light-strong);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+            font-size: 1.25rem;
+        }
+
+        .faq-question h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .faq-answer {
+            color: var(--muted);
+            padding-left: 64px;
+        }
+
+        .faq-answer ul {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
+        .faq-answer strong {
+            color: var(--foreground);
+        }
+
+        /* Contact Footer Card */
+        .contact-card {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px;
+            border-radius: 24px;
+            background: var(--bg);
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        .contact-card ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .contact-card li {
+            padding: 10px 20px;
+            border-radius: 12px;
+            background: var(--bg);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+            font-size: 0.875rem;
+            color: var(--foreground);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            padding: 40px;
+            border-radius: 32px;
+            background: var(--bg);
+            box-shadow: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
+        }
+
+        .footer-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: 0.875rem;
+        }
+
+        /* Focus states for accessibility */
+        a:focus, button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+            border-radius: 8px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                justify-content: flex-start;
+                gap: 12px;
+            }
+
+            .logo {
+                font-size: 1rem;
+                padding: 10px 16px;
+                white-space: nowrap;
+            }
+
+            .mobile-menu-btn {
+                margin-left: auto;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: calc(100% + 12px);
+                left: 24px;
+                right: 24px;
+                flex-direction: column;
+                gap: 4px;
+                padding: 16px;
+                border-radius: 20px;
+                background: var(--bg);
+                box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            }
+
+            nav.mobile-open {
+                display: flex;
+            }
+
+            nav a {
+                padding: 14px 16px;
+            }
+
+            /* Mobile dropdown */
+            .nav-dropdown {
+                width: 100%;
+            }
+
+            .nav-dropdown-trigger {
+                width: 100%;
+                justify-content: space-between;
+                padding: 14px 16px;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: hidden;
+                max-height: 0;
+                overflow: hidden;
+                padding: 0;
+                margin-top: 4px;
+                box-shadow: none;
+                background: transparent;
+                transition: max-height 0.3s ease, padding 0.3s ease, visibility 0s 0.3s;
+            }
+
+            .nav-dropdown.open .nav-dropdown-menu {
+                visibility: visible;
+                max-height: 300px;
+                padding: 8px 0 8px 16px;
+                transition: max-height 0.3s ease, padding 0.3s ease, visibility 0s;
+            }
+
+            .nav-dropdown-menu a {
+                padding: 12px 16px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .path-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+
+            .step-number {
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+            }
+
+            .account-types {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .edge-cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-answer {
+                padding-left: 0;
+            }
+
+            .faq-question {
+                flex-direction: column;
+            }
+
+            .shortcut-steps {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .shortcut-arrow {
+                transform: rotate(90deg);
+                text-align: center;
+            }
+
+            .contact-card ul {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="account-setup.html" class="logo">International Beauty <span>Setup</span></a>
+                <nav>
+                    <a href="#getting-started">Getting Started</a>
+                    <a href="#existing-accounts">Existing Accounts</a>
+                    <a href="#new-accounts">New Accounts</a>
+                    <a href="#edge-cases">Edge Cases</a>
+                    <a href="#tag-checklist">Tags</a>
+                    <a href="#troubleshooting">Help</a>
+                    <div class="nav-dropdown">
+                        <button class="nav-dropdown-trigger" style="color: var(--accent);">
+                            Restrictions Guide
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="nav-dropdown-menu">
+                            <a href="index.html#how-it-works">How It Works</a>
+                            <a href="index.html#common-questions">FAQ</a>
+                            <a href="index.html#brand-restrictions">Brand Restrictions</a>
+                            <a href="index.html#quick-reference">Quick Reference</a>
+                            <a href="index.html#tags">All Tags</a>
+                            <a href="index.html#examples">Examples</a>
+                        </div>
+                    </div>
+                </nav>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge">Internal Documentation</div>
+                <h1 class="font-display">Account <span>Setup</span> Guide</h1>
+                <p>Step-by-step guide for processing customer accounts across Shopify, Helium, and Bluelink.</p>
+            </div>
+        </section>
+
+        <!-- Getting Started -->
+        <section id="getting-started">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Getting Started</h2>
+                    <p>Open the Helium Customer Fields app in Shopify admin, then choose the right tab.</p>
+                </div>
+
+                <div class="intro-card">
+                    Navigate to <strong>Shopify Admin</strong> &rarr; <strong>Apps</strong> &rarr; <strong>Helium Customer Fields</strong>. You'll see two tabs for incoming signups.
+                </div>
+
+                <div class="path-cards">
+                    <div class="path-card">
+                        <div class="path-card-icon">👤</div>
+                        <h3>HAS IBSS ACCOUNT</h3>
+                        <p>Customer already has an account in Bluelink. You'll locate their existing record and tag accordingly.</p>
+                        <a href="#existing-accounts" class="path-link">See process &darr;</a>
+                    </div>
+                    <div class="path-card">
+                        <div class="path-card-icon">✨</div>
+                        <h3>NEW ACCOUNTS</h3>
+                        <p>Customer needs a brand new Bluelink account. Create it in Bluelink first, then follow the same tagging steps.</p>
+                        <a href="#new-accounts" class="path-link">See process &darr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Existing Accounts Flow -->
+        <section id="existing-accounts">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Existing Accounts</h2>
+                    <p>For customers who already have a Bluelink account. Follow these steps in order.</p>
+                </div>
+
+                <div class="steps">
+                    <!-- Step 1 -->
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Locate the Account in Bluelink</div>
+                            <div class="step-body">
+                                <p>Search for the customer in Bluelink using the <strong>Customer</strong> quick-find tab at the bottom of the dashboard.</p>
+                                <ul>
+                                    <li><strong>Phone number</strong> &mdash; most reliable method</li>
+                                    <li>Customer name or business name</li>
+                                    <li>Email address</li>
+                                </ul>
+                                <div class="step-tip">Tip: Phone search is the fastest and most reliable way to find customers.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Get the Bluelink Code</div>
+                            <div class="step-body">
+                                <p>On the customer page, find the <strong>Code</strong> field (top-left corner). Copy it and format as a tag:</p>
+                                <ul>
+                                    <li>Bluelink code: <strong>11001914</strong></li>
+                                    <li>Shopify tag: <span class="tag-pill customer">BL:11001914</span></li>
+                                </ul>
+                                <div class="step-warning">Tags must be exact &mdash; no extra spaces, characters, or typos. Double-check before saving.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Add Account Type Tag</div>
+                            <div class="step-body">
+                                <p>Check the <strong>Customer Type</strong> field (under Sales Related in Bluelink) and add the matching tag. Choose <strong>one</strong>:</p>
+                                <div class="account-types">
+                                    <div class="account-type">
+                                        <div class="account-type-icon">💇</div>
+                                        <div class="account-type-name">HAIR SALON</div>
+                                        <div class="account-type-desc">Professional salon</div>
+                                    </div>
+                                    <div class="account-type">
+                                        <div class="account-type-icon">✂️</div>
+                                        <div class="account-type-name">HAIRSTY/BARBER</div>
+                                        <div class="account-type-desc">Stylist or barber</div>
+                                    </div>
+                                    <div class="account-type">
+                                        <div class="account-type-icon">💅</div>
+                                        <div class="account-type-name">Esthetic</div>
+                                        <div class="account-type-desc">Esthetician</div>
+                                    </div>
+                                    <div class="account-type">
+                                        <div class="account-type-icon">🎓</div>
+                                        <div class="account-type-name">School</div>
+                                        <div class="account-type-desc">Educational institution</div>
+                                    </div>
+                                    <div class="account-type">
+                                        <div class="account-type-icon">📚</div>
+                                        <div class="account-type-name">Student</div>
+                                        <div class="account-type-desc">Student account</div>
+                                    </div>
+                                </div>
+                                <div class="step-tip">HAIR SALON and HAIRSTY/BARBER are the most critical &mdash; they control access to chemical products and special pricing.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Add Conditional Tags</div>
+                            <div class="step-body">
+                                <p>Check these fields in Bluelink and add tags if applicable:</p>
+                                <ul>
+                                    <li><strong>Contracts tab</strong> &mdash; If the salon has a brand contract, add the matching tag:
+                                        <br><span class="tag-pill customer">BRAND:BALMAIN</span>
+                                        <span class="tag-pill customer">BRAND:KM</span>
+                                        <span class="tag-pill customer">BRAND:EUFORA</span>
+                                    </li>
+                                    <li><strong>Terms field</strong> (under Credit Information) &mdash; If it shows <strong>STATEMENT ACCOUNT</strong>, add:
+                                        <br><span class="tag-pill customer">ALLPAY</span>
+                                        <br><span class="checklist-note">This lets the customer checkout without immediate payment.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-title">Check for Duplicates</div>
+                            <div class="step-body">
+                                <p>Some customers may already have an account in Shopify from our Bluelink import or education orders. Check if a matching record exists before saving.</p>
+                                <p>If you see a <strong>"Customer account conflict"</strong> message, see the <a href="#edge-cases" style="color: var(--accent); font-weight: 600;">Edge Cases</a> section below.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-title">Save, Merge if Needed, Approve &amp; Send Email</div>
+                            <div class="step-body">
+                                <ul>
+                                    <li><strong>Save</strong> the account with all tags</li>
+                                    <li>If there's a conflict, click <strong>"View conflicting customer"</strong>, review both accounts, and <strong>merge</strong> (prefer the info the customer entered themselves)</li>
+                                    <li>Click <strong>"Approve and send email"</strong> to activate the account</li>
+                                </ul>
+                                <div class="step-tip">The customer will receive an email notification that their account has been approved.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Accounts Flow -->
+        <section id="new-accounts">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">New Accounts</h2>
+                    <p>For customers who don't yet have a Bluelink account.</p>
+                </div>
+
+                <div class="shortcut-card">
+                    <h3>Key Difference: Create in Bluelink First</h3>
+                    <div class="shortcut-steps">
+                        <div class="shortcut-step">Create account<br>in Bluelink</div>
+                        <div class="shortcut-arrow">&rarr;</div>
+                        <div class="shortcut-step">Note the<br>Bluelink Code</div>
+                        <div class="shortcut-arrow">&rarr;</div>
+                        <div class="shortcut-step">Follow the same<br>Existing Account steps</div>
+                    </div>
+                    <p>Once the Bluelink account exists, follow <a href="#existing-accounts" style="color: var(--accent); font-weight: 600;">Steps 2&ndash;6 above</a> exactly as you would for an existing account: add the BL code tag, account type, conditional tags, check for duplicates, and approve.</p>
+                    <div class="step-warning" style="margin-top: 16px;">Do NOT add tags in Shopify before creating the Bluelink account. The Bluelink code must exist first.</div>
+                    <div class="step-tip" style="margin-top: 12px;">If Bluelink shows a matching but inactive customer for the same salon/person, reactivate that record instead of creating a new one. See <a href="#edge-cases" style="color: var(--accent-secondary); font-weight: 600;">Inactive Accounts</a> below.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Edge Cases -->
+        <section id="edge-cases">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Edge Cases</h2>
+                    <p>Common situations that need special handling.</p>
+                </div>
+
+                <div class="edge-cases-grid">
+                    <!-- Duplicate Accounts -->
+                    <div class="edge-case-card">
+                        <div class="edge-case-header">
+                            <div class="edge-case-icon">👥</div>
+                            <div class="edge-case-title">Duplicate Accounts</div>
+                        </div>
+                        <div class="edge-case-body">
+                            <h4>Why this happens</h4>
+                            <ul>
+                                <li><strong>Bluelink import</strong> &mdash; We imported ~15,000 customers when setting up Shopify. Many never activated.</li>
+                                <li><strong>Education orders</strong> &mdash; Placing an education order auto-creates a Shopify customer without a password.</li>
+                                <li><strong>Customer confusion</strong> &mdash; They don't realize they already have an account and sign up again.</li>
+                            </ul>
+
+                            <h4>How to resolve</h4>
+                            <ul>
+                                <li><strong>Choose the primary:</strong> Keep the account with orders. If none have orders, keep the one with the correct BL tag.</li>
+                                <li><strong>Preserve tags:</strong> Copy BL code, account type, and brand tags to the primary before deleting anything.</li>
+                                <li><strong>Delete duplicates:</strong> Only delete records with <strong>no orders</strong>. Never delete an account that has order history.</li>
+                                <li><strong>Update &amp; invite:</strong> Refresh the primary with the new signup details, then send the account invite.</li>
+                                <li><strong>Clean up Helium:</strong> Delete the Helium application once the Shopify record is correct.</li>
+                            </ul>
+
+                            <div class="edge-case-outcome">One clean customer record with correct tags, preserved orders, and invite sent.</div>
+                        </div>
+                    </div>
+
+                    <!-- Inactive Accounts -->
+                    <div class="edge-case-card">
+                        <div class="edge-case-header">
+                            <div class="edge-case-icon">💤</div>
+                            <div class="edge-case-title">Inactive Bluelink Accounts</div>
+                        </div>
+                        <div class="edge-case-body">
+                            <h4>How to recognize</h4>
+                            <ul>
+                                <li>The <strong>Company</strong> field starts with <strong>**</strong> (e.g., **KELLY LINDBECK)</li>
+                                <li>The <strong>Active</strong> checkbox is unchecked</li>
+                                <li>Accounts that haven't ordered in a while may be set to inactive, but they still exist</li>
+                            </ul>
+
+                            <h4>How to reactivate</h4>
+                            <ul>
+                                <li><strong>Confirm identity:</strong> Match the application to the Bluelink record using phone, email, salon name, and address. If anything is unclear, message Noah.</li>
+                                <li><strong>Fix the record:</strong> Remove the leading <strong>**</strong> from the Company field and check the <strong>Active</strong> checkbox.</li>
+                                <li><strong>Verify details:</strong> Update name, address, phone, and email to match the application.</li>
+                                <li><strong>Continue tagging:</strong> The customer's Code stays the same. Proceed with normal steps.</li>
+                            </ul>
+
+                            <div class="edge-case-outcome">Existing account reactivated, details verified, and customer invited to activate.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tag Checklist -->
+        <section id="tag-checklist">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Tag Checklist</h2>
+                    <p>Use this checklist for every account you process.</p>
+                </div>
+
+                <div class="checklist">
+                    <!-- Required -->
+                    <div class="checklist-group required">
+                        <div class="checklist-label">
+                            <div class="checklist-dot"></div>
+                            Required &mdash; Always Add
+                        </div>
+                        <div class="checklist-items">
+                            <div class="checklist-item">
+                                <div class="checklist-check">&#10003;</div>
+                                <div class="checklist-item-content">
+                                    <strong>Bluelink Code</strong> &mdash; <span class="tag-pill customer">BL:######</span>
+                                    <div class="checklist-note">Found in the Code field on the Bluelink customer page. Format exactly as BL: followed by the code.</div>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="checklist-check">&#10003;</div>
+                                <div class="checklist-item-content">
+                                    <strong>Account Type</strong> &mdash; Choose one:
+                                    <span class="tag-pill customer">HAIR SALON</span>
+                                    <span class="tag-pill customer">HAIRSTY/BARBER</span>
+                                    <span class="tag-pill customer">Esthetic</span>
+                                    <span class="tag-pill customer">School</span>
+                                    <span class="tag-pill customer">Student</span>
+                                    <div class="checklist-note">Check the Customer Type field under Sales Related in Bluelink.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conditional -->
+                    <div class="checklist-group conditional">
+                        <div class="checklist-label">
+                            <div class="checklist-dot"></div>
+                            Conditional &mdash; Check Bluelink
+                        </div>
+                        <div class="checklist-items">
+                            <div class="checklist-item">
+                                <div class="checklist-check">?</div>
+                                <div class="checklist-item-content">
+                                    <strong>Brand Tags</strong> &mdash;
+                                    <span class="tag-pill customer">BRAND:BALMAIN</span>
+                                    <span class="tag-pill customer">BRAND:KM</span>
+                                    <span class="tag-pill customer">BRAND:EUFORA</span>
+                                    <div class="checklist-note">Check the Contracts tab in Bluelink. Add matching tags if the salon has brand contracts. Multiple brand tags can be added.</div>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="checklist-check">?</div>
+                                <div class="checklist-item-content">
+                                    <strong>Statement Account</strong> &mdash; <span class="tag-pill customer">ALLPAY</span>
+                                    <div class="checklist-note">Check the Terms field under Credit Information. If it shows "STATEMENT ACCOUNT", add the ALLPAY tag. This allows the customer to checkout without immediate payment.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Automatic -->
+                    <div class="checklist-group automatic">
+                        <div class="checklist-label">
+                            <div class="checklist-dot"></div>
+                            Automatic &mdash; Do Not Add Manually
+                        </div>
+                        <div class="checklist-items">
+                            <div class="checklist-item">
+                                <div class="checklist-check">&mdash;</div>
+                                <div class="checklist-item-content">
+                                    <strong>Region Tags</strong> &mdash;
+                                    <span class="tag-pill region">REGION:PRAIRIE</span>
+                                    <span class="tag-pill region">REGION:BC</span>
+                                    <span class="tag-pill region">REGION:EAST</span>
+                                    <span class="tag-pill region">REGION:ONTARIO</span>
+                                    <span class="tag-pill region">REGION:QUEBEC</span>
+                                    <span class="tag-pill region">REGION:MB-SK</span>
+                                    <div class="checklist-note">Assigned automatically by the system based on customer location. No action needed.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-banner">
+                    <div class="warning-banner-icon">&#9888;</div>
+                    <div>Tags must be <strong>exact</strong> &mdash; no extra spaces, characters, or typos. A single mistake can break the integration and prevent the customer from accessing products.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section id="troubleshooting">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Troubleshooting</h2>
+                    <p>Common issues and how to resolve them.</p>
+                </div>
+
+                <div class="faq-grid">
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">🔍</div>
+                            <h3>Can't find customer in Bluelink</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <ul>
+                                <li>Try searching by <strong>phone number</strong> first &mdash; it's the most reliable</li>
+                                <li>Try variations: first name only, last name only, business name</li>
+                                <li>Check for typos in the information provided</li>
+                                <li>If still not found, this is likely a <strong>new account</strong> that needs to be <a href="#new-accounts" style="color: var(--accent); font-weight: 600;">created in Bluelink first</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">📱</div>
+                            <h3>"Phone has already been taken" error</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This happens because the customer likely already exists in Shopify from one of these sources:</p>
+                            <ul>
+                                <li><strong>Bluelink import</strong> &mdash; We imported ~15,000 customers; many never activated their accounts</li>
+                                <li><strong>Education order</strong> &mdash; Placing an education order auto-creates a Shopify customer</li>
+                                <li><strong>Personal vs. business accounts</strong> &mdash; Salon owners may have both a personal and salon account</li>
+                            </ul>
+                            <p><strong>Solution:</strong> Follow the <a href="#edge-cases" style="color: var(--accent); font-weight: 600;">Duplicate Accounts</a> resolution workflow.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">🏷️</div>
+                            <h3>Unsure about account type</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <ul>
+                                <li><strong>HAIR SALON</strong> = full salon with multiple stylists</li>
+                                <li><strong>HAIRSTY/BARBER</strong> = individual stylist or barber</li>
+                                <li>Check their credentials or license information</li>
+                                <li>When in doubt, <strong>message Noah Kenny</strong> for guidance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-card">
+                        <div class="faq-question">
+                            <div class="faq-icon">📋</div>
+                            <h3>Not sure about brand contracts</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <ul>
+                                <li>Check the <strong>Contracts</strong> tab in Bluelink carefully</li>
+                                <li>If the field is empty, <strong>no brand tags are needed</strong></li>
+                                <li>If unsure about a specific contract, consult with Noah Kenny</li>
+                                <li>You can add multiple brand tags if the salon has contracts with multiple brands</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="contact-card" style="margin-top: 40px;">
+                    <h3>Need Help? Contact Noah Kenny</h3>
+                    <p>Reach out if you encounter any of these situations:</p>
+                    <ul>
+                        <li>Uncertain about account type</li>
+                        <li>Multiple conflicting accounts</li>
+                        <li>Complex brand contracts</li>
+                        <li>Anything unusual or unclear</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">International <span>Beauty</span></div>
+                <p>Internal Documentation &bull; Account Setup Guide</p>
+                <p style="margin-top: 8px; opacity: 0.7;">Questions? Contact the web team.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('mobile-open');
+        });
+
+        // Mobile dropdown toggle (tap instead of hover)
+        const navDropdowns = document.querySelectorAll('.nav-dropdown');
+        navDropdowns.forEach(dropdown => {
+            const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+            trigger.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    navDropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('open'); });
+                    dropdown.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking a link
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('mobile-open');
+                navDropdowns.forEach(d => d.classList.remove('open'));
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                nav.classList.remove('mobile-open');
+                navDropdowns.forEach(d => d.classList.remove('open'));
+            }
+        });
+    </script>
+</body>
+</html>
