@@ -1138,6 +1138,102 @@
             </div>
         </section>
 
+        <!-- Tag Checklist -->
+        <section id="tag-checklist">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="font-display">Tag Checklist</h2>
+                    <p>Use this checklist for every account you process.</p>
+                </div>
+
+                <div class="checklist">
+                    <!-- Required -->
+                    <div class="checklist-group required">
+                        <div class="checklist-label">
+                            <div class="checklist-dot"></div>
+                            Required &mdash; Always Add
+                        </div>
+                        <div class="checklist-items">
+                            <div class="checklist-item">
+                                <div class="checklist-check">&#10003;</div>
+                                <div class="checklist-item-content">
+                                    <strong>Bluelink Code</strong> &mdash; <span class="tag-pill customer">BL:######</span>
+                                    <div class="checklist-note">Found in the Code field on the Bluelink customer page. Format exactly as BL: followed by the code.</div>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="checklist-check">&#10003;</div>
+                                <div class="checklist-item-content">
+                                    <strong>Account Type</strong> &mdash; Choose one:
+                                    <span class="tag-pill customer">HAIR SALON</span>
+                                    <span class="tag-pill customer">HAIRSTY/BARBER</span>
+                                    <span class="tag-pill customer">Esthetic</span>
+                                    <span class="tag-pill customer">School</span>
+                                    <span class="tag-pill customer">Student</span>
+                                    <div class="checklist-note">Check the Customer Type field under Sales Related in Bluelink.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conditional -->
+                    <div class="checklist-group conditional">
+                        <div class="checklist-label">
+                            <div class="checklist-dot"></div>
+                            Conditional &mdash; Check Bluelink
+                        </div>
+                        <div class="checklist-items">
+                            <div class="checklist-item">
+                                <div class="checklist-check">?</div>
+                                <div class="checklist-item-content">
+                                    <strong>Brand Tags</strong> &mdash;
+                                    <span class="tag-pill customer">BRAND:BALMAIN</span>
+                                    <span class="tag-pill customer">BRAND:KM</span>
+                                    <span class="tag-pill customer">BRAND:EUFORA</span>
+                                    <div class="checklist-note">Check the Contracts tab in Bluelink. Add matching tags if the salon has brand contracts. Multiple brand tags can be added.</div>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="checklist-check">?</div>
+                                <div class="checklist-item-content">
+                                    <strong>Statement Account</strong> &mdash; <span class="tag-pill customer">ALLPAY</span>
+                                    <div class="checklist-note">Check the Terms field under Credit Information. If it shows "STATEMENT ACCOUNT", add the ALLPAY tag. This allows the customer to checkout without immediate payment.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Automatic -->
+                    <div class="checklist-group automatic">
+                        <div class="checklist-label">
+                            <div class="checklist-dot"></div>
+                            Automatic &mdash; Do Not Add Manually
+                        </div>
+                        <div class="checklist-items">
+                            <div class="checklist-item">
+                                <div class="checklist-check">&mdash;</div>
+                                <div class="checklist-item-content">
+                                    <strong>Region Tags</strong> &mdash;
+                                    <span class="tag-pill region">REGION:PRAIRIE</span>
+                                    <span class="tag-pill region">REGION:BC</span>
+                                    <span class="tag-pill region">REGION:EAST</span>
+                                    <span class="tag-pill region">REGION:ONTARIO</span>
+                                    <span class="tag-pill region">REGION:QUEBEC</span>
+                                    <span class="tag-pill region">REGION:MB-SK</span>
+                                    <div class="checklist-note">Assigned automatically by the system based on customer location. No action needed.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-banner">
+                    <div class="warning-banner-icon">&#9888;</div>
+                    <div>Tags must be <strong>exact</strong> &mdash; no extra spaces, characters, or typos. A single mistake can break the integration and prevent the customer from accessing products.</div>
+                </div>
+            </div>
+        </section>
+
         <!-- Existing Accounts Flow -->
         <section id="existing-accounts">
             <div class="container">
@@ -1357,102 +1453,6 @@
                             <div class="edge-case-outcome">Existing account reactivated, details verified, and customer invited to activate.</div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tag Checklist -->
-        <section id="tag-checklist">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="font-display">Tag Checklist</h2>
-                    <p>Use this checklist for every account you process.</p>
-                </div>
-
-                <div class="checklist">
-                    <!-- Required -->
-                    <div class="checklist-group required">
-                        <div class="checklist-label">
-                            <div class="checklist-dot"></div>
-                            Required &mdash; Always Add
-                        </div>
-                        <div class="checklist-items">
-                            <div class="checklist-item">
-                                <div class="checklist-check">&#10003;</div>
-                                <div class="checklist-item-content">
-                                    <strong>Bluelink Code</strong> &mdash; <span class="tag-pill customer">BL:######</span>
-                                    <div class="checklist-note">Found in the Code field on the Bluelink customer page. Format exactly as BL: followed by the code.</div>
-                                </div>
-                            </div>
-                            <div class="checklist-item">
-                                <div class="checklist-check">&#10003;</div>
-                                <div class="checklist-item-content">
-                                    <strong>Account Type</strong> &mdash; Choose one:
-                                    <span class="tag-pill customer">HAIR SALON</span>
-                                    <span class="tag-pill customer">HAIRSTY/BARBER</span>
-                                    <span class="tag-pill customer">Esthetic</span>
-                                    <span class="tag-pill customer">School</span>
-                                    <span class="tag-pill customer">Student</span>
-                                    <div class="checklist-note">Check the Customer Type field under Sales Related in Bluelink.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Conditional -->
-                    <div class="checklist-group conditional">
-                        <div class="checklist-label">
-                            <div class="checklist-dot"></div>
-                            Conditional &mdash; Check Bluelink
-                        </div>
-                        <div class="checklist-items">
-                            <div class="checklist-item">
-                                <div class="checklist-check">?</div>
-                                <div class="checklist-item-content">
-                                    <strong>Brand Tags</strong> &mdash;
-                                    <span class="tag-pill customer">BRAND:BALMAIN</span>
-                                    <span class="tag-pill customer">BRAND:KM</span>
-                                    <span class="tag-pill customer">BRAND:EUFORA</span>
-                                    <div class="checklist-note">Check the Contracts tab in Bluelink. Add matching tags if the salon has brand contracts. Multiple brand tags can be added.</div>
-                                </div>
-                            </div>
-                            <div class="checklist-item">
-                                <div class="checklist-check">?</div>
-                                <div class="checklist-item-content">
-                                    <strong>Statement Account</strong> &mdash; <span class="tag-pill customer">ALLPAY</span>
-                                    <div class="checklist-note">Check the Terms field under Credit Information. If it shows "STATEMENT ACCOUNT", add the ALLPAY tag. This allows the customer to checkout without immediate payment.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Automatic -->
-                    <div class="checklist-group automatic">
-                        <div class="checklist-label">
-                            <div class="checklist-dot"></div>
-                            Automatic &mdash; Do Not Add Manually
-                        </div>
-                        <div class="checklist-items">
-                            <div class="checklist-item">
-                                <div class="checklist-check">&mdash;</div>
-                                <div class="checklist-item-content">
-                                    <strong>Region Tags</strong> &mdash;
-                                    <span class="tag-pill region">REGION:PRAIRIE</span>
-                                    <span class="tag-pill region">REGION:BC</span>
-                                    <span class="tag-pill region">REGION:EAST</span>
-                                    <span class="tag-pill region">REGION:ONTARIO</span>
-                                    <span class="tag-pill region">REGION:QUEBEC</span>
-                                    <span class="tag-pill region">REGION:MB-SK</span>
-                                    <div class="checklist-note">Assigned automatically by the system based on customer location. No action needed.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="warning-banner">
-                    <div class="warning-banner-icon">&#9888;</div>
-                    <div>Tags must be <strong>exact</strong> &mdash; no extra spaces, characters, or typos. A single mistake can break the integration and prevent the customer from accessing products.</div>
                 </div>
             </div>
         </section>
